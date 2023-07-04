@@ -1,0 +1,26 @@
+.nav {
+    display: flex;
+    align-items: center;
+    background-color: #D8222A;
+    padding: 1rem 1.8rem;
+}
+
+.nav > img {
+    max-width: 100%;
+}
+.nav > ul {
+    margin-left: auto;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.nav > ul > li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.6rem;
+    color: #FFFFFF;
+    font-size: 1.6rem;
+    font-weight: 500;
+}
