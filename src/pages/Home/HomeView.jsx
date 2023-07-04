@@ -1,7 +1,7 @@
 const HomeView = () => {
     return (
       <>
-        
+        home
       </>
     );
   }

@@ -14,13 +14,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 1rem;
 }
-.nav > ul > li {
+.nav > ul > li > a {
+    color: #FFFFFF;
+    font-size: 1.6rem;
+    font-weight: 500;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 0.6rem;
-    color: #FFFFFF;
-    font-size: 1.6rem;
-    font-weight: 500;
+    text-decoration: none;
 }
