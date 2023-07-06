@@ -1,0 +1,11 @@
+.container {
+    background-color: rgba(102, 56, 63, 0.55);
+    position: fixed;
+    padding: 1rem 3rem;
+    color: white;
+    font-weight: 600;
+    border-radius: 25px;
+    font-size: clamp(1.4rem, 3vw, 2.4rem);
+    left: 50%;
+    transform: translateX(-50%);
+}

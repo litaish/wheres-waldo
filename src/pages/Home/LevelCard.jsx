@@ -1,6 +1,6 @@
 import styles from './LevelCard.module.css';
 import { Link } from 'react-router-dom';
-import Character from './Character';
+import CharacterIcon from './CharacterIcon';
 
 const LevelCard = () => {
     return (
@@ -13,10 +13,10 @@ const LevelCard = () => {
         <div className={styles.card__content}>
           <p className={styles.card__level}>Beach</p>
           <div className={styles.card__characters}>
-            <Character />
-            <Character />
-            <Character />
-            <Character />
+            <CharacterIcon />
+            <CharacterIcon />
+            <CharacterIcon/>
+            <CharacterIcon />
           </div>
         </div>
       </div>

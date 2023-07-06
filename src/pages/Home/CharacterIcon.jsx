@@ -1,6 +1,6 @@
-import styles from './Character.module.css';
+import styles from './CharacterIcon.module.css';
 
-const Character = () => {
+const CharacterIcon = () => {
     return (
       <div className={styles.container}>
         <img src="https://fakeimg.pl/40/"></img>
@@ -8,4 +8,4 @@ const Character = () => {
     );
   }
   
-  export default Character;
+  export default CharacterIcon;
