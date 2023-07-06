@@ -1,0 +1,27 @@
+.container {
+    background-color: #FFFFFF;
+    border: 2px solid #DFDFDF;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding: 2.2rem 1.8rem;
+}
+.place__number {
+    font-size: 2.4rem;
+    font-weight: 400;
+}
+.player__name {
+    color: #000000;
+    font-size: 1.6rem;
+    font-weight: 400;
+    margin: 0;
+}
+.time {
+    color: #000000;
+    font-size: 1.6rem;
+    font-weight: 400;
+    margin: 0;
+}
+.right {
+    margin-left: auto;
+}

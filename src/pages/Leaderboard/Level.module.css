@@ -1,0 +1,37 @@
+.container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    /* Init a css counter */
+    counter-reset: css-counter 0;
+}
+.container > div {
+    /* Increment a css counter */
+    counter-increment: css-counter 1;
+}
+.container span::after {
+    /* Set counter to be "#1... #2.." */
+    content: '#' counter(css-counter);
+}
+.container > header {
+    margin-bottom: 2rem;
+    padding: 2rem 3rem;
+    background-color: #D8222A;
+    text-align: center;
+    color: #FFFFFF;
+    font-size: 2rem;
+    font-weight: 500;
+}
+.container > div:nth-child(2) > span {
+    color: #C9B037;
+}
+.container > div:nth-child(3) > span {
+    color: #9D9797;
+}
+.container > div:nth-child(4) > span {
+    color: #AD8A56;
+}
+.container > div:nth-child(n + 5) > span {
+    color: #000000;
+}
