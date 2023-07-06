@@ -1,0 +1,29 @@
+.container {
+    position: absolute;
+    display: flex;
+    gap: 0.6rem;
+}
+.bounding__box {
+    background-color: transparent;
+    height: 65px;
+    width: 65px;
+    border: 3px dashed red;
+}
+.characters {
+    background-color: #FFFFFF;
+    border: 1px solid #DFDFDF;
+    padding: 1.2rem;
+    list-style: none;
+    max-width: 30rem;
+}
+.characters > li {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: #000000;
+    border-bottom: 1px solid #DFDFDF;
+    padding-bottom: 1rem;
+    margin: 1rem;
+}

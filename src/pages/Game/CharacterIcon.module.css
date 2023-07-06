@@ -1,8 +1,7 @@
 .container {
-    max-width: 70px;
-    height: 70px;
     border-radius: 100%;
     border: 3px solid #D8222A;
+    background-color: transparent;
     display: flex;
     justify-content: center;
     align-items: center;

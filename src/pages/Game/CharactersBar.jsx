@@ -4,10 +4,10 @@ import CharacterIcon from './CharacterIcon';
 const CharactersBar = () => {
   return (
     <div className={styles.container}>
-      <CharacterIcon />
-      <CharacterIcon />
-      <CharacterIcon />
-      <CharacterIcon />
+      <CharacterIcon size={70} />
+      <CharacterIcon size={70} />
+      <CharacterIcon size={70} />
+      <CharacterIcon size={70} />
     </div>
   )
 };
