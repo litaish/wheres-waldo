@@ -1,7 +1,7 @@
-import styles from './Image.module.css';
+import styles from './Canvas.module.css';
 import CharacterSelector from './CharacterSelector';
 
-const Image = () => {
+const Canvas = () => {
 
   return (
     <div>
@@ -11,4 +11,4 @@ const Image = () => {
   )
 };
 
-export default Image
+export default Canvas;

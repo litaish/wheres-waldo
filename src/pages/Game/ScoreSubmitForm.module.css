@@ -1,0 +1,74 @@
+.overlay {
+    display: block;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(99, 99, 99, 0.66);
+    z-index: 2; 
+}
+.form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    background-color: #FFFFFF;
+    padding: 1.6rem;
+    min-width: 20dvw;
+    display: flex;
+    flex-direction: column;
+    gap: 2dvh;
+}
+.form__row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+.form__row > label {
+    text-transform: uppercase;
+    color: #535353;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+.form__row > input {
+    border: 2px solid #DFDFDF;
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 1.6rem;
+    transition: .3s;
+}
+.button__container {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 1.6rem;
+}
+.button {
+    all: unset;
+    cursor: pointer;
+    border-radius: 3px;
+    color: #FFFFFF;
+    font-size: 1.6rem;
+    font-weight: 500;
+    padding: 1rem 2dvw;
+    transition: .3s;
+}
+.button__submit {
+    background-color: #0F3E3E;
+}
+.button__submit:hover {
+    background-color: #0b2c2c;
+}
+.button__dismiss {
+    background-color: #66383F;
+}
+.button__dismiss:hover {
+    background-color: #46262b;
+}
+.text__container > p {
+    color: #000000;
+    font-size: 1.6rem; 
+}
