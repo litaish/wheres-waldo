@@ -41,9 +41,3 @@
     align-items: center;
     gap: .8rem;
 }
-.card__characters > span {
-    background-color: white;
-    height: 40px;
-    width: 40px;
-    border-radius: 100%;
-}
