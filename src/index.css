@@ -22,3 +22,7 @@ html {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
+main {
+  background-color: #F9F9FB;
+  flex: 1;
+}
