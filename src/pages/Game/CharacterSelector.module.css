@@ -5,8 +5,8 @@
 }
 .bounding__box {
     background-color: transparent;
-    height: 65px;
-    width: 65px;
+    height: 60px;
+    width: 60px;
     border: 3px dashed red;
 }
 .characters {

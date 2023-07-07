@@ -1,9 +1,9 @@
 import styles from './CharacterIcon.module.css';
 
-const CharacterIcon = () => {
+const CharacterIcon = ({ img }) => {
     return (
       <div className={styles.container}>
-        <img src="https://fakeimg.pl/40/"></img>
+        <img src={img}></img>
       </div>
     );
   }
