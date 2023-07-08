@@ -9,3 +9,6 @@
     align-items: center;
     overflow: hidden;
 }
+.container > img {
+    height: 100%;
+}
