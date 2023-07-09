@@ -1,4 +1,3 @@
-import styles from './GameView.module.css';
 import CharactersBar from './CharactersBar';
 import Canvas from './Canvas';
 import Timer from './Timer';
@@ -10,9 +9,7 @@ const GameView = () => {
         <ScoreSubmitForm />
         <CharactersBar />
         <Timer />
-        <div className={styles.image__container}>
-          <Canvas />
-        </div>
+        <Canvas />
       </main>
     );
   }

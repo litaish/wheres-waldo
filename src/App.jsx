@@ -5,6 +5,7 @@ import HomeView from "./pages/Home/HomeView";
 import GameView from "./pages/Game/GameView";
 import LeaderboardView from "./pages/Leaderboard/LeaderboardView";
 import { LevelsProvider } from "./context/LevelsContext";
+import { GameProvider } from "./context/GameContext";
 
 function App() {
   return (
@@ -18,7 +19,9 @@ function App() {
           } />
           <Route path='/game/:id' element={
             <LevelsProvider>
-              <GameView />
+              <GameProvider>
+                <GameView />
+              </GameProvider>
             </LevelsProvider>
           } />
         <Route path='/leaderboard' element={<LeaderboardView />} />
