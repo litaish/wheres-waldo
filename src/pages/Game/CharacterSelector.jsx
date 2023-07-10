@@ -32,16 +32,16 @@ const CharacterSelector = ({ pos }) => {
       </div>
       <ul className={styles.characters}>
         <li>
-          <CharacterIcon size={45}/>
+          <CharacterIcon size={40}/>
         </li>
         <li>
-          <CharacterIcon size={45}/>
+          <CharacterIcon size={40}/>
         </li>
         <li>
-          <CharacterIcon size={45}/>
+          <CharacterIcon size={40}/>
         </li>
         <li>
-          <CharacterIcon size={45}/>
+          <CharacterIcon size={40}/>
         </li>
       </ul>
     </div>

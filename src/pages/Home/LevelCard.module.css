@@ -7,22 +7,20 @@
 }
 
 .card__img {
-    min-height: 32rem;
-    width: 100%;
+    aspect-ratio:  16/9; /* 1/1 for square */
+    max-width: 100%;
     object-fit: cover;
     display: block;
     transition: transform .5s ease;
 }
 
 .card__img__container {
-
     overflow: hidden;
 }
 
 .card__img:hover {
     transform: scale(1.2);
 }
-
 
 .card__content {
     margin-top: auto;
