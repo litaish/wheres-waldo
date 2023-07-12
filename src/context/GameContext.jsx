@@ -7,7 +7,7 @@ export const GameContext = createContext();
 
 export const GameProvider = ({ children }) => {
     const [clickCoordinates, setClickCoordinates] = useState({ x: 111, y: 222 });
-    const [game, setGame] = useState({});
+    const [game, setGame] = useState();
     const { time, stop } = useStopwatch();
 
     const loadGameData = async (levelId) => {

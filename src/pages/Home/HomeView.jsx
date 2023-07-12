@@ -2,6 +2,7 @@ import styles from './HomeView.module.css';
 import Banner from './Banner';
 import LevelsGrid from './LevelsGrid';
 import LevelCard from './LevelCard';
+import LoadingSpinner from '../../components/ui/LoadingSpinner';
 import { useContext, useEffect } from 'react';
 import { LevelsContext } from '../../context/LevelsContext';
 
@@ -12,6 +13,10 @@ const HomeView = () => {
     useEffect(() => {
       fetchLevels();
     }, []);
+
+    if (!levels) {
+      return <LoadingSpinner />
+    }
 
     return (
       <main className={styles.container}>

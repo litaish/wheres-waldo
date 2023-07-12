@@ -2,6 +2,7 @@ import CharactersBar from './CharactersBar';
 import Canvas from './Canvas';
 import Stopwatch from './Stopwatch';
 import ScoreSubmitForm from './ScoreSubmitForm';
+import LoadingSpinner from '../../components/ui/LoadingSpinner';
 import { useContext, useEffect } from 'react';
 import { GameContext } from '../../context/GameContext';
 import { useParams } from 'react-router-dom';
@@ -9,7 +10,7 @@ import { doc, onSnapshot } from 'firebase/firestore';
 import { db } from '../../config/firebase-config'
 
 const GameView = () => {
-  const { loadGameData, setGame } = useContext(GameContext);
+  const { game, loadGameData, setGame } = useContext(GameContext);
   const { id } = useParams();
 
   useEffect(() => {
@@ -26,12 +27,16 @@ const GameView = () => {
     return unsubscribeFromSnapshot;
   }, [])
 
+  if (!game)  {
+    return <LoadingSpinner />
+  }
+
   return (
     <main>
       <ScoreSubmitForm />
       <CharactersBar />
       <Stopwatch />
-      <Canvas />
+      <Canvas img={game.level.img}/>
     </main>
   );
 }
