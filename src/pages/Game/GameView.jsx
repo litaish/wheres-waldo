@@ -1,6 +1,6 @@
 import CharactersBar from './CharactersBar';
 import Canvas from './Canvas';
-import Timer from './Timer';
+import Stopwatch from './Stopwatch';
 import ScoreSubmitForm from './ScoreSubmitForm';
 
 const GameView = () => {
@@ -8,7 +8,7 @@ const GameView = () => {
       <main>
         <ScoreSubmitForm />
         <CharactersBar />
-        <Timer />
+        <Stopwatch />
         <Canvas />
       </main>
     );

@@ -4,20 +4,9 @@ import LevelsGrid from './LevelsGrid';
 import LevelCard from './LevelCard';
 import { useContext, useEffect } from 'react';
 import { LevelsContext } from '../../context/LevelsContext';
-import { collection, getDocs } from 'firebase/firestore';
-import { db } from '../../config/firebase-config';
 
 const HomeView = () => {
-    const { levels, setLevels } = useContext(LevelsContext);
-
-    const fetchLevels = async () => {
-      await getDocs(collection(db, "levels"))
-      .then((querySnapshot)=>{               
-          const newData = querySnapshot.docs
-              .map((doc) => ({...doc.data(), id:doc.id }));
-          setLevels(newData);                
-      })
-    }
+    const { levels, fetchLevels } = useContext(LevelsContext);
 
     // fetchLevels does not depend on any variables or props, so linter suggestion can be ignored
     useEffect(() => {
