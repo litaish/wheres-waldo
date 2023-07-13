@@ -1,9 +1,11 @@
 import styles from './CharacterSelector.module.css';
 import CharacterIcon from './CharacterIcon';
-import { useEffect, useRef } from 'react';
+import { useContext, useEffect, useRef } from 'react';
+import { GameContext } from '../../context/GameContext';
 
 const CharacterSelector = ({ pos }) => {
   const { x, y } = pos;
+  const { level } = useContext(GameContext);
   
   const characterSelectorRef = useRef(null);
 
@@ -31,18 +33,13 @@ const CharacterSelector = ({ pos }) => {
             
       </div>
       <ul className={styles.characters}>
-        <li>
-          <CharacterIcon size={40}/>
-        </li>
-        <li>
-          <CharacterIcon size={40}/>
-        </li>
-        <li>
-          <CharacterIcon size={40}/>
-        </li>
-        <li>
-          <CharacterIcon size={40}/>
-        </li>
+        {level.characters.map(character => {
+          return (
+            <li key={character.name}>
+              <CharacterIcon size={45} img={character.img} hasBackground={true}/>
+            </li>
+          )
+        })}
       </ul>
     </div>
   )

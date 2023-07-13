@@ -22,7 +22,7 @@ const GameView = () => {
   return (
     <main>
       <ScoreSubmitForm />
-      <CharactersBar />
+      <CharactersBar characters={level.characters}/>
       <Stopwatch />
       <Canvas img={level.img}/>
     </main>
