@@ -5,7 +5,7 @@ import { GameContext } from '../../context/GameContext';
 
 const CharacterSelector = ({ pos }) => {
   const { x, y } = pos;
-  const { level } = useContext(GameContext);
+  const { level, isSelectorActive, handleSelectorToggle } = useContext(GameContext);
   
   const characterSelectorRef = useRef(null);
 
@@ -28,17 +28,19 @@ const CharacterSelector = ({ pos }) => {
   }, [pos]);
 
   return (
-    <div ref={characterSelectorRef} className={styles.container}>
+    <div ref={characterSelectorRef} className={styles.container} style={{ display: isSelectorActive ? 'flex' : 'none' }}>
       <div className={styles.bounding__box}>
             
       </div>
       <ul className={styles.characters}>
         {level.characters.map(character => {
-          return (
-            <li key={character.name}>
-              <CharacterIcon size={45} img={character.img} hasBackground={true}/>
-            </li>
-          )
+          if (!character.found) {
+            return (
+              <li key={character.name} onClick={handleSelectorToggle}>
+                <CharacterIcon size={45} img={character.img} hasBackground={true}/>
+              </li>
+            )
+          }
         })}
       </ul>
     </div>

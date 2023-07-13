@@ -5,7 +5,7 @@ const CharactersBar = ({ characters }) => {
   return (
     <div className={styles.container}>
       {characters.map(character => {
-        return <CharacterIcon key={character.name} size={70} img={character.img} hasBackground={false}/>
+        return <CharacterIcon key={character.name} size={70} img={character.img} hasBackground={false} isFound={character.found}/>
       })}
     </div>
   )

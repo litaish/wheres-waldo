@@ -8,6 +8,7 @@ export const GameContext = createContext();
 export const GameProvider = ({ children }) => {
     const [clickCoordinates, setClickCoordinates] = useState({ x: 111, y: 222 });
     const [level, setLevel] = useState();
+    const [isSelectorActive, setIsSelectorActive] = useState();
     const { time, stop } = useStopwatch();
 
     const fetchLevel = async (levelId) => {
@@ -21,10 +22,17 @@ export const GameProvider = ({ children }) => {
         }
     }
 
-    const handleCanvasClick = (e) => setClickCoordinates({ x: e.clientX, y: e.clientY });
+    const handleSelectorToggle = () => {
+        setIsSelectorActive(prev => !prev);
+    }
+
+    const handleCanvasClick = (e) => {
+        setClickCoordinates({ x: e.clientX, y: e.clientY });
+        handleSelectorToggle();
+    }
 
     return (
-        <GameContext.Provider value={{ clickCoordinates, handleCanvasClick, time, stop, level, fetchLevel }}>
+        <GameContext.Provider value={{ clickCoordinates, handleCanvasClick, time, stop, level, fetchLevel, isSelectorActive, handleSelectorToggle }}>
             {children}
         </GameContext.Provider>
     )
