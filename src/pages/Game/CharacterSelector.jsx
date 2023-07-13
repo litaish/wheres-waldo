@@ -2,10 +2,12 @@ import styles from './CharacterSelector.module.css';
 import CharacterIcon from './CharacterIcon';
 import { useContext, useEffect, useRef } from 'react';
 import { GameContext } from '../../context/GameContext';
+import { useParams } from 'react-router-dom';
 
 const CharacterSelector = ({ pos }) => {
   const { x, y } = pos;
-  const { level, isSelectorActive, handleSelectorToggle } = useContext(GameContext);
+  const { level, isSelectorActive, handleSelectorToggle, handleSelectionClick } = useContext(GameContext);
+  const { id } = useParams();
   
   const characterSelectorRef = useRef(null);
 
@@ -36,7 +38,10 @@ const CharacterSelector = ({ pos }) => {
         {level.characters.map(character => {
           if (!character.found) {
             return (
-              <li key={character.name} onClick={handleSelectorToggle}>
+              <li key={character.name} onClick={() => {
+                handleSelectorToggle();
+                handleSelectionClick(character.name, pos, id);
+              }}>
                 <CharacterIcon size={45} img={character.img} hasBackground={true}/>
               </li>
             )
