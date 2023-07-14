@@ -33,12 +33,16 @@ export const GameProvider = ({ children }) => {
 
         if (querySnapshot.empty) {
             return;
-        } else {
-            const playerNames = querySnapshot.docs[0].data().scores.map(score => {
-                return score.player.toLowerCase();
-            })
-            setLevelPlayers(playerNames);
         }
+
+        const scores = querySnapshot.docs[0].data().scores;
+
+        if (!scores.length) return;
+
+        const playerNames = scores.map(score => {
+            return score.player.toLowerCase();
+        })
+        setLevelPlayers(playerNames);
     }
 
     const handleSelectorToggle = () => {
