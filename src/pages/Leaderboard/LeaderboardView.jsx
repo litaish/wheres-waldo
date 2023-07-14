@@ -1,30 +1,42 @@
-// import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './LeaderboardView.module.css';
 import Level from "./Level";
 import Score from "./Score";
+import LoadingSpinner from '../../components/ui/LoadingSpinner';
+import { collection, getDocs } from 'firebase/firestore';
+import { db } from '../../config/firebase-config';
 
 const LeaderboardView = () => {
-  // don't need state, just fetch the levels and display them
-  // let levelsWithScores = {};
+  const leaderboardCollectionRef = collection(db, 'leaderboard');
+  const [leaderboard, setLeaderboard] = useState([]);
 
-  // useEffect(() => {
-  //   levelsWithScores = { level: 'test' };
-  // }, [])
+  const fetchLeaderboard = async () => {
+    const leaderboardData = await getDocs(leaderboardCollectionRef);
+    setLeaderboard(leaderboardData.docs.map(doc => ({
+      ...doc.data(),
+      id: doc.id,
+    })))
+  }
+
+  useEffect(() => {
+    fetchLeaderboard();
+  }, []);
+
+  if (!leaderboard) {
+    return <LoadingSpinner />
+  }
 
     return (
       <main className={styles.container}>
-        <Level>
-          <Score />
-          <Score />
-          <Score />
-          <Score />
-        </Level>
-        <Level>
-          <Score />
-          <Score />
-          <Score />
-          <Score />
-        </Level>
+        {leaderboard.map(data => {
+          return (
+            <Level key={data.id} title={data.level_name}>
+              {data.scores.map(score => {
+                return <Score key={crypto.randomUUID()} player={score.player} time={score.time}/>
+              })}
+            </Level>
+          )
+        })}
       </main>
     );
   }

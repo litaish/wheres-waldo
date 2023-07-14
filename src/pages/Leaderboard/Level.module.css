@@ -15,6 +15,7 @@
     content: '#' counter(css-counter);
 }
 .container > header {
+    text-transform: capitalize;
     margin-bottom: 2rem;
     padding: 2rem 3rem;
     background-color: #D8222A;

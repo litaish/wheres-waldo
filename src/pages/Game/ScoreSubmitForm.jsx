@@ -38,7 +38,7 @@ const ScoreSubmitForm = ({ isHidden }) => {
     const playerNameTrimmed = playerName.trim();
 
     const leaderboardCollection = collection(db, 'leaderboard');
-    const leaderboardQuery = query(leaderboardCollection, where('level', '==', levelId));
+    const leaderboardQuery = query(leaderboardCollection, where('level_id', '==', levelId));
 
     const querySnapshot = await getDocs(leaderboardQuery);
 
@@ -54,9 +54,9 @@ const ScoreSubmitForm = ({ isHidden }) => {
         {
           player: playerNameTrimmed,
           time: {
-            hours: time.hr,
-            minutes: time.min,
-            seconds: time.sec,
+            hr: time.hr,
+            min: time.min,
+            sec: time.sec,
           }
         }
       ]

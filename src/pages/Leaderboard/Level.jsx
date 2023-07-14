@@ -1,9 +1,9 @@
 import styles from './Level.module.css';
 
-const Level = ({ children }) => {
+const Level = ({ children, title }) => {
   return (
     <div className={styles.container}>
-      <header>Beach</header>
+      <header>{title}</header>
       {children}
     </div>
   )
