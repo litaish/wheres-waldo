@@ -8,6 +8,7 @@ export const GameContext = createContext();
 
 export const GameProvider = ({ children }) => {
     const [clickCoordinates, setClickCoordinates] = useState({ x: 0, y: 0 });
+    const [clientCoordinates, setClientCoordinates] = useState({ x: 0, y: 0 });
     const [level, setLevel] = useState();
     const [isSelectorActive, setIsSelectorActive] = useState();
     const { time, stop } = useStopwatch();
@@ -70,10 +71,13 @@ export const GameProvider = ({ children }) => {
     
         setClickCoordinates({ x: clickX, y: clickY });
         handleSelectorToggle();
+
+        // Set client coordinates for character selector
+        setClientCoordinates( { x: e.clientX, y: e.clientY } );
     }
 
     return (
-        <GameContext.Provider value={{ clickCoordinates, handleCanvasClick, time, stop, level, fetchLevel, isSelectorActive, handleSelectorToggle, handleSelectionClick }}>
+        <GameContext.Provider value={{ clickCoordinates, handleCanvasClick, time, stop, level, fetchLevel, isSelectorActive, handleSelectorToggle, handleSelectionClick, clientCoordinates }}>
             {children}
         </GameContext.Provider>
     )

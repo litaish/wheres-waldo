@@ -5,8 +5,7 @@ import { GameContext } from '../../context/GameContext';
 import { useParams } from 'react-router-dom';
 
 const CharacterSelector = ({ pos }) => {
-  const { x, y } = pos;
-  const { level, isSelectorActive, handleSelectorToggle, handleSelectionClick } = useContext(GameContext);
+  const { level, isSelectorActive, handleSelectorToggle, handleSelectionClick, clientCoordinates } = useContext(GameContext);
   const { id } = useParams();
   
   const characterSelectorRef = useRef(null);
@@ -14,12 +13,12 @@ const CharacterSelector = ({ pos }) => {
   const setCharacterSelectorPos = () => {
     const width = characterSelectorRef.current.offsetWidth;
 
-    // Take scroll offsets in consideration
+    // // Take scroll offsets in consideration
     const scrollY = window.scrollY;
     const scrollX = window.scrollX;
 
-    const newY = y - (width / 2) + scrollY;
-    const newX = x - (width / 2) + scrollX;
+    const newX = clientCoordinates.x - (width / 2) + scrollX;
+    const newY = clientCoordinates.y - (width / 2) + scrollY;
 
     characterSelectorRef.current.style.top = `${newY}px`;
     characterSelectorRef.current.style.left = `${newX}px`;
@@ -42,7 +41,7 @@ const CharacterSelector = ({ pos }) => {
                 handleSelectorToggle();
                 handleSelectionClick(character.name, pos, id);
               }}>
-                <CharacterIcon size={45} img={character.img} hasBackground={true}/>
+                <CharacterIcon size={40} img={character.img} hasBackground={true}/>
               </li>
             )
           }
