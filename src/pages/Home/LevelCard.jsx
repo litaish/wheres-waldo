@@ -6,8 +6,7 @@ const LevelCard = ({ id, thumbnail, title, characters }) => {
     return (
       <div className={styles.card}>
         <Link to={`/game/${id}`}>
-          <div className={styles.card__img__container}>
-            <img className={styles.card__img} src={thumbnail} alt="" />
+          <div className={styles.card__img__container} style={{backgroundImage: `url(${thumbnail})`}}>
           </div>
         </Link>
         <div className={styles.card__content}>
