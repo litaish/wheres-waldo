@@ -17,7 +17,8 @@ const ScoreSubmitForm = ({ isHidden }) => {
 
   const validateField = (input) => {
     if (input.trim() === '') {
-      setValidation({ isNameValid: false, errorMsg: 'Name cannot be empty' })
+      setValidation({ isNameValid: false, errorMsg: 'Name cannot be empty' });
+      console.log(levelPlayers)
       return false;
     }
     else if (levelPlayers.includes(input.toLowerCase().trim())) {

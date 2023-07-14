@@ -27,7 +27,7 @@ export const GameProvider = ({ children }) => {
 
     const fetchLevelPlayers = async (levelId) => {
         const leaderboardRef = collection(db, 'leaderboard');
-        const q = query(leaderboardRef, where('level', '==', levelId), limit(1));
+        const q = query(leaderboardRef, where('level_id', '==', levelId), limit(1));
 
         const querySnapshot = await getDocs(q);
 

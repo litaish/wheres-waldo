@@ -3,7 +3,7 @@ import styles from './LeaderboardView.module.css';
 import Level from "./Level";
 import Score from "./Score";
 import LoadingSpinner from '../../components/ui/LoadingSpinner';
-import sortScoresByTimes from '../../utils/sortScoresByTimesjs';
+import sortScoresByTimes from '../../utils/sortScoresByTimes.js';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../../config/firebase-config';
 
