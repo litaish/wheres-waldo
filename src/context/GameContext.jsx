@@ -11,6 +11,7 @@ export const GameProvider = ({ children }) => {
     const [clientCoordinates, setClientCoordinates] = useState({ x: 0, y: 0 });
     const [level, setLevel] = useState();
     const [isSelectorActive, setIsSelectorActive] = useState();
+    const [levelPlayers, setLevelPlayers] = useState([]);
     const { time, stop } = useStopwatch();
 
     const fetchLevel = async (levelId) => {
@@ -21,6 +22,22 @@ export const GameProvider = ({ children }) => {
             setLevel({ ...docSnap.data(), id: docSnap.id });
         } else {
             console.log('No such level found!')
+        }
+    }
+
+    const fetchLevelPlayers = async (levelId) => {
+        const leaderboardRef = collection(db, 'leaderboard');
+        const q = query(leaderboardRef, where('level', '==', levelId), limit(1));
+
+        const querySnapshot = await getDocs(q);
+
+        if (querySnapshot.empty) {
+            return;
+        } else {
+            const playerNames = querySnapshot.docs[0].data().scores.map(score => {
+                return score.player.toLowerCase();
+            })
+            setLevelPlayers(playerNames);
         }
     }
 
@@ -83,7 +100,7 @@ export const GameProvider = ({ children }) => {
     }
 
     return (
-        <GameContext.Provider value={{ clickCoordinates, handleCanvasClick, time, stop, level, fetchLevel, isSelectorActive, handleSelectorToggle, handleSelectionClick, clientCoordinates }}>
+        <GameContext.Provider value={{ clickCoordinates, handleCanvasClick, time, stop, level, fetchLevel, isSelectorActive, handleSelectorToggle, handleSelectionClick, clientCoordinates, levelPlayers, fetchLevelPlayers }}>
             {children}
         </GameContext.Provider>
     )

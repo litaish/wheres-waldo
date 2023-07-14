@@ -1,6 +1,58 @@
+import { useNavigate, useParams } from 'react-router-dom';
 import styles from './ScoreSubmitForm.module.css';
+import { useContext, useEffect, useState } from 'react';
+import { GameContext } from '../../context/GameContext';
 
 const ScoreSubmitForm = ({ isHidden }) => {
+  const navigate = useNavigate();
+  const { time, levelPlayers, fetchLevelPlayers } = useContext(GameContext);
+  const { id } = useParams();
+  const [validation, setValidation] = useState({
+    isNameValid: false,
+    errorMsg: '',
+  });
+
+  const validateField = (input) => {
+    if (input.trim() === '') {
+      setValidation({ isNameValid: false, errorMsg: 'Name cannot be empty' })
+      return false;
+    }
+    else if (levelPlayers.includes(input.toLowerCase().trim())) {
+      setValidation({ isNameValid: false, errorMsg: 'This name is already taken for this level' })
+      return false;
+    }
+    else if (input.length > 30) {
+      setValidation({ isNameValid: false, errorMsg: 'This name is too long' })
+      return false;
+    }
+    else {
+      setValidation({ isNameValid: true, errorMsg: '' })
+      return true;
+    }
+  }
+  
+  const addScore = () => {
+    // add score to leaderboard
+
+    // check if level document is first created (better yet create them all now)
+  }
+
+  const handleDismissClick = () => {
+    navigate('/leaderboard');
+  }
+
+  const handleSubmitClick = () => {
+    navigate('/leaderboard');
+  }
+
+  const handleChange = (e) => {
+    validateField(e.target.value);
+  }
+
+  useEffect(() => {
+    fetchLevelPlayers(id);
+  }, [])
+
   return (
     <div className={styles.overlay} style={{ display: isHidden ? 'flex' : 'none' }}>
       <form className={styles.form}>
@@ -10,11 +62,12 @@ const ScoreSubmitForm = ({ isHidden }) => {
         </div>
         <div className={styles.form__row}>
             <label htmlFor="name">Your Name</label>
-            <input id='name' type="text" />
+            <span className={styles.error}>{validation.errorMsg}</span>
+            <input onChange={handleChange} id='name' type="text" name='name' placeholder='type your name...'/>
         </div>
         <div className={styles.button__container}>
-            <button className={`${styles.button} ${styles.button__dismiss}`} type="button">Dismiss</button>
-            <button className={`${styles.button} ${styles.button__submit}`} type="button">Submit</button>
+            <button onClick={handleDismissClick} className={`${styles.button} ${styles.button__dismiss}`} type="button">Dismiss</button>
+            <button onClick={handleSubmitClick} disabled={!validation.isNameValid} className={`${styles.button} ${styles.button__submit}`} type="button">Submit</button>
         </div>
       </form>
     </div>
