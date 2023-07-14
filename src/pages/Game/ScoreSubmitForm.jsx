@@ -1,8 +1,8 @@
 import styles from './ScoreSubmitForm.module.css';
 
-const ScoreSubmitForm = () => {
+const ScoreSubmitForm = ({ isHidden }) => {
   return (
-    <div className={styles.overlay}>
+    <div className={styles.overlay} style={{ display: isHidden ? 'flex' : 'none' }}>
       <form className={styles.form}>
         <div className={styles.text__container}>
             <p>Congratulations! You found them all! &#127942;</p>

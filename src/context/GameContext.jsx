@@ -46,13 +46,19 @@ export const GameProvider = ({ children }) => {
                 ymin: character.ymin,
                 ymax: character.ymax,
             }
-            
+
             // Check if click coordinates are within bounding box
             if (isWithinBoundingBox(clickCoords, boundingBoxCoords)) {
-                console.log('found it!')
-            } else {
-                console.log(clickCoords, boundingBoxCoords)
-                console.log('nope')
+                // Set the character property to found
+                setLevel((prevLevel) => {
+                    const newCharacters = prevLevel.characters.map(c => {
+                        if (c.name.toLowerCase() === character.name.toLowerCase()) {
+                            return { ...c, found: true }
+                        }
+                        return c;
+                    })
+                    return { ...prevLevel, characters: newCharacters }
+                });
             }
         }
     }
@@ -62,18 +68,18 @@ export const GameProvider = ({ children }) => {
 
         const imgx = imgRect.left;
         const imgy = imgRect.top;
-    
+
         const scaleX = imgRect.width / e.target.naturalWidth;
         const scaleY = imgRect.height / e.target.naturalHeight;
-    
+
         const clickX = (e.clientX - imgx) / scaleX;
         const clickY = (e.clientY - imgy) / scaleY;
-    
+
         setClickCoordinates({ x: clickX, y: clickY });
         handleSelectorToggle();
 
         // Set client coordinates for character selector
-        setClientCoordinates( { x: e.clientX, y: e.clientY } );
+        setClientCoordinates({ x: e.clientX, y: e.clientY });
     }
 
     return (
