@@ -62,6 +62,7 @@ const ScoreSubmitForm = ({ isHidden }) => {
         }
       ]
     });
+    navigate('/leaderboard');
   }
 
 
@@ -71,7 +72,6 @@ const ScoreSubmitForm = ({ isHidden }) => {
 
   const handleSubmitClick = () => {
     addScore(id);
-    navigate('/leaderboard');
   }
 
   const handleChange = (e) => {
