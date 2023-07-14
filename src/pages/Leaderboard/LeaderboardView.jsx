@@ -3,6 +3,7 @@ import styles from './LeaderboardView.module.css';
 import Level from "./Level";
 import Score from "./Score";
 import LoadingSpinner from '../../components/ui/LoadingSpinner';
+import sortScoresByTimes from '../../utils/sortScoresByTimesjs';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../../config/firebase-config';
 
@@ -31,7 +32,8 @@ const LeaderboardView = () => {
         {leaderboard.map(data => {
           return (
             <Level key={data.id} title={data.level_name}>
-              {data.scores.map(score => {
+              { /* Sort original scores array by fastest time */}
+              {sortScoresByTimes(data.scores).map(score => {
                 return <Score key={crypto.randomUUID()} player={score.player} time={score.time}/>
               })}
             </Level>
